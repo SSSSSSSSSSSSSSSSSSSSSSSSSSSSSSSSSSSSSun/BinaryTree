@@ -24,6 +24,7 @@ public:
 public:
 	CBinaryTree_const_Iterator(CBinaryTree_Node<T>* p) : m_p{ p } {};
 
+	
 protected:
 	CBinaryTree_Node<T>* m_p;
 };
@@ -38,7 +39,11 @@ public:
 	using iterator_category = std::bidirectional_iterator_tag;
 
 public:
+	CBinaryTree_Iterator() = default;
 	CBinaryTree_Iterator(CBinaryTree_Node<T>* p) : CBinaryTree_const_Iterator<T>(p) {};
+
+
+
 };
 
 template <typename T>
