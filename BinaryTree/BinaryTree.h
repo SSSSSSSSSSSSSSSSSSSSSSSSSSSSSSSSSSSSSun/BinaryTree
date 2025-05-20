@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 
-template <typename T>
+template <class T>
 struct CBinaryTree_Node {
 	T data;
 	CBinaryTree_Node* parent{ nullptr };
@@ -12,7 +12,7 @@ struct CBinaryTree_Node {
 	CBinaryTree_Node(const T& value, CBinaryTree_Node* parent) : data{ value }, parent{ parent } {}
 };
 
-template <typename T>
+template <class T>
 class CBinaryTree_const_Iterator {
 public:
 	using difference_type = ptrdiff_t;
@@ -24,12 +24,27 @@ public:
 public:
 	CBinaryTree_const_Iterator(CBinaryTree_Node<T>* p) : m_p{ p } {};
 
+	reference operator*() const {
+		return const_cast<reference>(_Mybase::operator*());
+	}
+
+	pointer operator->() const {
+		return m_p;
+	}
+
+	bool operator== CBinaryTree_const_Iterator();
+	CBinaryTree_const_Iterator operator++();
+	CBinaryTree_const_Iterator operator--();
+
+	CBinaryTree_const_Iterator operator++(int);
+	CBinaryTree_const_Iterator operator--(int);
+
 	
 protected:
 	CBinaryTree_Node<T>* m_p;
 };
 
-template <typename T>
+template <class T>
 class CBinaryTree_Iterator : public CBinaryTree_const_Iterator<T> {
 public:
 	using difference_type = ptrdiff_t;
@@ -46,7 +61,7 @@ public:
 
 };
 
-template <typename T>
+template <class T>
 class CBinaryTree
 {
 public:

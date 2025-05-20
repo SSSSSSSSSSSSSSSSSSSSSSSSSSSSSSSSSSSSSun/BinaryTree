@@ -1,6 +1,6 @@
 #include "BinaryTree.h"
 
-template <typename T>
+template <class T>
 CBinaryTree_const_Iterator<T> CBinaryTree<T>::cbegin() const
 {
 	CBinaryTree_Node* current{ m_root };
@@ -11,13 +11,13 @@ CBinaryTree_const_Iterator<T> CBinaryTree<T>::cbegin() const
 	return current;
 }
 
-template <typename T>
+template <class T>
 CBinaryTree_const_Iterator<T> CBinaryTree<T>::cend() const
 {
 	return nullptr;
 }
 
-template <typename T>
+template <class T>
 CBinaryTree_Iterator<T> CBinaryTree<T>::begin() const
 {
 
@@ -30,7 +30,7 @@ CBinaryTree_Iterator<T> CBinaryTree<T>::end() const
 	return cend().p;
 }
 
-template <typename T>
+template <class T>
 void CBinaryTree<T>::insert(const T& value)
 {
 	if (nullptr == m_root){					// ºó Æ®¸®
@@ -70,7 +70,7 @@ void CBinaryTree<T>::insert(const T& value)
 	m_size++;
 }
 
-template <typename T>
+template <class T>
 void CBinaryTree<T>::erase(const T& value)
 {
 
